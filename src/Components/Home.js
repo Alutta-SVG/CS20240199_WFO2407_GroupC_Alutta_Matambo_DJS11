@@ -32,3 +32,22 @@ const Home = () => {
 
         setFilteredShows(sortedShows);
     }, [sortOrder, selectedGenre, shows]);
+
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
+        setFilteredShows(
+            shows.filter((show) => show.title.toLowerCase().includes(query))
+        );
+    };
+    return (
+        <div className="home">
+            <header className="header">
+                <h1>Podcast App</h1>
+                <div className="search-container">
+                    <input
+                        type="text"
+                        placeholder="Search for a podcast..."
+                        value={searchQuery}
+                        onChange={handleSearch}
+                    />
