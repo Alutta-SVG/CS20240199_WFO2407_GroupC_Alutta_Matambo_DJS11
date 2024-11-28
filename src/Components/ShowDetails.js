@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { format, isValid } from 'date-fns';
+import { saveToLocalStorage, getFromLocalStorage } from '../LocalStorageUtils';
 
 const ShowDetails = () => {
     const { id } = useParams();
@@ -17,6 +18,13 @@ const ShowDetails = () => {
             })
             .catch((error) => console.error('Error fetching show details:', error));
     }, [id]);
+
+    const addFavorite = (item) => {
+        const storedFavorites = getFromLocalStorage('favorites') || [];
+        const updatedFavorites = [...storedFavorites, item];
+        saveToLocalStorage('favorites', updatedFavorites);
+        alert(`${item.title} added to favorites!`);
+    };
 
     if (!show) return <div>Loading...</div>;
 
@@ -48,6 +56,7 @@ const ShowDetails = () => {
                         {selectedSeason.episodes.map((episode) => (
                             <li key={episode.id}>
                                 <p>{episode.title}</p>
+                                <button onClick={() => addFavorite(episode)}>Add to Favorites</button>
                                 <button>Remove from Favorites</button>
                             </li>
                         ))}
