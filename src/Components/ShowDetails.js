@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 
 const ShowDetails = () => {
     const { id } = useParams();
@@ -11,6 +11,7 @@ const ShowDetails = () => {
         fetch(`https://podcast-api.netlify.app/id/${id}`)
             .then((response) => response.json())
             .then((data) => {
+                console.log('API Response:', data);
                 setShow(data);
                 if (data.seasons.length > 0) setSelectedSeason(data.seasons[0]);
             })
@@ -19,10 +20,15 @@ const ShowDetails = () => {
 
     if (!show) return <div>Loading...</div>;
 
+    const formattedDate = (dateString) => {
+        const date = new Date(dateString);
+        return isValid(date) ? format(date, 'MMMM dd, yyyy') : 'Date not available';
+    };
+
     return (
         <div className="show-details">
             <h1>{show.title}</h1>
-            <p>Last updated: {format(new Date(show.updated_at), 'MMMM dd, yyyy')}</p>
+            <p>Last updated: {formattedDate(show.updated_at)}</p>
 
             <div className="seasons">
                 <h2>Seasons</h2>
