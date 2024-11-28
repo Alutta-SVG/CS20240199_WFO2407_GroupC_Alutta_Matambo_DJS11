@@ -51,3 +51,34 @@ const Home = () => {
                         value={searchQuery}
                         onChange={handleSearch}
                     />
+
+<select onChange={(e) => setSortOrder(e.target.value)}>
+                        <option value="A-Z">A-Z</option>
+                        <option value="Z-A">Z-A</option>
+                        <option value="Recently Updated">Recently Updated</option>
+                    </select>
+                    <select onChange={(e) => setSelectedGenre(e.target.value)}>
+                        <option value="All">All Genres</option>
+                        {/* Dynamically populate genres */}
+                        {Array.from(new Set(shows.map((show) => show.genre))).map((genre) => (
+                            <option key={genre} value={genre}>
+                                {genre}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </header>
+            <div className="shows-grid">
+                {filteredShows.map((show) => (
+                    <div key={show.id} className="show-card">
+                        <img src={show.image} alt={show.title} />
+                        <h3>{show.title}</h3>
+                        <button onClick={() => navigate(`/show/${show.id}`)}>View Details</button>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default Home;
