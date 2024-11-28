@@ -26,3 +26,48 @@
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.season-container h2 {
+    font-size: 1.5rem;
+    color: #4c8076;
+    margin-bottom: 10px;
+}
+
+.episode {
+    margin-left: 20px;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+.episode:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.season-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.season-item {
+    cursor: pointer;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.season-item.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.episodes {
+    margin-top: 20px;
+}
