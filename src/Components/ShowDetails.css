@@ -1,24 +1,25 @@
-.show-details-container {
+.show-details {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     padding: 20px;
     min-height: 100vh;
 }
 
-.show-details-container h1 {
+.show-details h1 {
     color: #333;
     font-size: 2rem;
     margin-bottom: 10px;
 }
 
-.show-details-container p {
+.show-details p {
     font-size: 1rem;
     color: #555;
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.season-container {
+/* Seasons Section */
+.seasons {
     margin-bottom: 30px;
     padding: 15px;
     border: 1px solid #ddd;
@@ -27,22 +28,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.season-container h2 {
+.seasons h2 {
     font-size: 1.5rem;
     color: #4c8076;
     margin-bottom: 10px;
-}
-
-.episode {
-    margin-left: 20px;
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.4;
-}
-
-.episode:hover {
-    text-decoration: underline;
-    cursor: pointer;
 }
 
 .season-list {
@@ -61,6 +50,11 @@
     border-radius: 12px;
     background-color: #f9f9f9;
     font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.season-item:hover {
+    background-color: #e0e0e0;
 }
 
 .season-item.active {
@@ -68,6 +62,7 @@
     color: white;
 }
 
+/* Episodes Section */
 .episodes {
     margin-top: 20px;
 }
@@ -82,4 +77,27 @@
     padding: 6px 12px;
     background-color: #f4f4f4;
     border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.episode-list li p {
+    margin: 0;
+    font-size: 1rem;
+    color: #444;
+}
+
+.episode-list li button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.episode-list li button:hover {
+    background-color: #0056b3;
 }

@@ -60,22 +60,27 @@ const ShowDetails = () => {
         <div className="show-details">
             <h1>{show.title}</h1>
             <p>Last updated: {formattedDate(show.updated_at)}</p>
-
+            <p className="description">{show.description}</p> {}
+    
             <div className="seasons">
                 <h2>Seasons</h2>
-                <ul>
+                <ul className="season-list">
                     {show.seasons.map((season) => (
-                        <li key={season.id} onClick={() => setSelectedSeason(season)}>
+                        <li
+                            key={season.id}
+                            className={`season-item ${selectedSeason?.id === season.id ? 'active' : ''}`}
+                            onClick={() => setSelectedSeason(season)}
+                        >
                             {season.title}
                         </li>
                     ))}
                 </ul>
             </div>
-
+    
             {selectedSeason && (
                 <div className="episodes">
                     <h3>{selectedSeason.title}</h3>
-                    <ul>
+                    <ul className="episode-list">
                         {selectedSeason.episodes.map((episode) => (
                             <li key={episode.id}>
                                 <p>{episode.title}</p>
@@ -87,6 +92,5 @@ const ShowDetails = () => {
             )}
         </div>
     );
-};
-
+}
 export default ShowDetails;
