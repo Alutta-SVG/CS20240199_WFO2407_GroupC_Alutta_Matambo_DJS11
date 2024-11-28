@@ -33,6 +33,18 @@ const ShowDetails = () => {
         return isValid(date) ? format(date, 'MMMM dd, yyyy') : 'Date not available';
     };
 
+    const trackFrequentlyWatched = (id) => {
+        const watchHistory = getFromLocalStorage('watchHistory') || {};
+        watchHistory[id] = (watchHistory[id] || 0) + 1;
+        saveToLocalStorage('watchHistory', watchHistory);
+    };
+    
+    useEffect(() => {
+        if (selectedSeason) {
+            trackFrequentlyWatched(selectedSeason.id);
+        }
+    }, [selectedSeason]);
+    
     return (
         <div className="show-details">
             <h1>{show.title}</h1>
