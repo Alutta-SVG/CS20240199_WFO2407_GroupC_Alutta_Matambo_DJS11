@@ -43,8 +43,10 @@
 }
 
 .show-image {
-    max-width: 100%;
-    border-radius: 8px;
+    width: 100%; /* Ensures the image spans the width of the card */
+    height: 150px; /* Keeps a consistent height */
+    object-fit: cover; /* Scales the image to fit without distortion */
+    border-radius: 8px; /* Matches the card's style */
 }
 
 .details-button {
