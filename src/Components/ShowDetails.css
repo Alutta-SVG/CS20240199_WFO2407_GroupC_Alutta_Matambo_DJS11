@@ -71,3 +71,15 @@
 .episodes {
     margin-top: 20px;
 }
+
+.episode-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.episode-list li {
+    margin: 5px 0;
+    padding: 6px 12px;
+    background-color: #f4f4f4;
+    border-radius: 6px;
+}
