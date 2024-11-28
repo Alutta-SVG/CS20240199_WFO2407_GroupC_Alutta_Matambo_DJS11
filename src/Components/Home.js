@@ -16,4 +16,19 @@ const Home = () => {
             .then((data) => setShows(data))
             .catch((error) => console.error('Error fetching shows:', error));
     }, []);
-    
+    useEffect(() => {
+        let sortedShows = [...shows];
+        if (sortOrder === 'A-Z') {
+            sortedShows.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortOrder === 'Z-A') {
+            sortedShows.sort((a, b) => b.title.localeCompare(a.title));
+        } else if (sortOrder === 'Recently Updated') {
+            sortedShows.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+        }
+
+        if (selectedGenre !== 'All') {
+            sortedShows = sortedShows.filter((show) => show.genre === selectedGenre);
+        }
+
+        setFilteredShows(sortedShows);
+    }, [sortOrder, selectedGenre, shows]);
