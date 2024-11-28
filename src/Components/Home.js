@@ -43,7 +43,7 @@ const Home = () => {
     return (
         <div className="home">
             <header className="header">
-                <h1>Podcast App</h1>
+                <h1>Podcast Chill</h1>
                 <div className="search-container">
                     <input
                         type="text"

@@ -34,3 +34,22 @@ const ShowDetailsPage = () => {
                     ))}
                 </ul>
             </div>
+
+            {selectedSeason && (
+                <div className="episodes">
+                    <h3>{selectedSeason.title}</h3>
+                    <ul>
+                        {selectedSeason.episodes.map((episode) => (
+                            <li key={episode.id}>
+                                <p>{episode.title}</p>
+                                <button>Remove from Favorites</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default ShowDetailsPage;
